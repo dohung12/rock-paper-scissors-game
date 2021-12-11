@@ -31,3 +31,25 @@ function playRound(playerSelection, computerSelection) {
     }
   }
 }
+function game() {
+  let computerScore = 0;
+  let playerScore = 0;
+  for (let i = 0; i < 5; i++) {
+    const computerSelection = computerPlay();
+    const playerSelection = prompt("Rock paper scissors:");
+    const result = playRound(playerSelection, computerSelection).split(" ");
+    if (result[1] === "win!") {
+      playerScore++;
+    } else if (result[1] === "lose!") {
+      computerScore++;
+    }
+    console.log(result.join(" "));
+  }
+  if (computerScore > playerScore) {
+    console.log("Computer wins.Score " + computerScore + ":" + playerScore);
+  } else if (playerScore > computerScore) {
+    console.log("You win. Score" + playerScore + ":" + computerScore);
+  } else {
+    console.log("Match tie");
+  }
+}
