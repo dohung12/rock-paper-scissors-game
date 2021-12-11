@@ -7,33 +7,27 @@ function random(num) {
   return Math.floor(Math.random() * num);
 }
 
-function singleRound(playerSelection, computerSelection) {
-  function roundReturn(roundResult) {
-    console.log("a");
-    if (roundResult === "win") {
-      return `You ${roundResult}! ${playerSelection} beats ${computerSelection}`;
-    } else {
-      return `You ${roundResult}! ${computerSelection} beats  ${playerSelection}`;
-    }
-  }
-  const pS = playerSelection.toLowerCase();
-  if (computerSelection === "rock") {
-    if (pS === "paper") {
-      roundReturn("win");
-    } else if (pS === "scissors") {
-      roundReturn("lose");
-    }
-  } else if (computerSelection === "paper") {
-    if (pS === "scissors") {
-      roundReturn("win");
-    } else if (pS === "rock") {
-      roundReturn("lose");
-    }
-  } else if (computerSelection === "scissors") {
-    if (pS === "rock") {
-      roundReturn("win");
-    } else if (pS === "paper") {
-      roundReturn("lose");
+// calculate the result of a match
+function playRound(playerSelection, computerSelection) {
+  const localStr = playerSelection.toLowerCase() + computerSelection;
+
+  if (playerSelection.toLowerCase() === computerSelection) {
+    return "Match tie";
+  } else {
+    switch (localStr) {
+      case "paperscissors":
+      case "rockpaper":
+      case "scissorsrock":
+        return `You lose! ${computerSelection} beats ${playerSelection}`;
+        break;
+      case "paperrock":
+      case "rockscissors":
+      case "scissorspaper":
+        return `You win! ${playerSelection} beats ${computerSelection}`;
+        break;
+      default:
+        alert("invalid input");
+        break;
     }
   }
 }
