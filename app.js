@@ -73,9 +73,9 @@ function game() {
     console.log(result.join(" "));
   }
   if (computerScore > playerScore) {
-    console.log("Computer wins.Score " + computerScore + ":" + playerScore);
+    console.log("Computer wins " + computerScore + ":" + playerScore);
   } else if (playerScore > computerScore) {
-    console.log("You win. Score" + playerScore + ":" + computerScore);
+    console.log("You win " + playerScore + ":" + computerScore);
   } else {
     console.log("Match tie");
   }
