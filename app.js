@@ -1,14 +1,37 @@
+/*
+plan:
+interface: on console terminal
+input: user selection of rock, paper, scissors 
+output: return the result of comparing user's with computer's 
+
+pseudo-code:
+make a function return random one of three: rock, paper or scissors
+get user selection, turn into lowercase
+compare between two, return who wins, what beats what, increase winner score by one.
+loop back to beginning, keep the scores.
+
+
+*/
+
 const rps = ["rock", "paper", "scissors"];
 function computerPlay() {
+  /*input: 
+  output: one random child in rps array */
   return rps[random(rps.length)];
 }
 
 function random(num) {
+  // input: number
+  // output random number in range [0, num)
   return Math.floor(Math.random() * num);
 }
 
 // calculate the result of a match
 function playRound(playerSelection, computerSelection) {
+  // input string, string
+  // output string
+  // compare selections of player to computer, return who wins
+  // alert if user give invalid input
   const localStr = playerSelection.toLowerCase() + computerSelection;
 
   if (playerSelection.toLowerCase() === computerSelection) {
@@ -32,6 +55,10 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 function game() {
+  // input:
+  // output console.log
+  // loop the game in 5 turns
+  // save the score of each round, at the end, return who wins more round.
   let computerScore = 0;
   let playerScore = 0;
   for (let i = 0; i < 5; i++) {
