@@ -12,8 +12,26 @@ loop back to beginning, keep the scores.
 
 
 */
-
+// VARIABLES
 const rps = ["rock", "paper", "scissors"];
+const rockBtn = document.querySelector(".rock-btn");
+const paperBtn = document.querySelector(".paper-btn");
+const scissorsBtn = document.querySelector(".scissors-btn");
+let playerSelection;
+// EVENT LISTENER
+
+rockBtn.addEventListener("click", () => {
+  playerSelection = "rock";
+});
+
+paperBtn.addEventListener("click", () => {
+  playerSelection = "paper";
+});
+
+scissorsBtn.addEventListener("click", () => {
+  playerSelection = "scissors";
+});
+// FUNCTION
 function computerPlay() {
   /*input: 
   output: one random child in rps array */
@@ -61,17 +79,17 @@ function game() {
   // save the score of each round, at the end, return who wins more round.
   let computerScore = 0;
   let playerScore = 0;
-  for (let i = 0; i < 5; i++) {
-    const computerSelection = computerPlay();
-    const playerSelection = prompt("Rock paper scissors:");
-    const result = playRound(playerSelection, computerSelection).split(" ");
-    if (result[1] === "win!") {
-      playerScore++;
-    } else if (result[1] === "lose!") {
-      computerScore++;
-    }
-    console.log(result.join(" "));
+
+  const computerSelection = computerPlay();
+  const playerSelection = prompt("Rock paper scissors:");
+  const result = playRound(playerSelection, computerSelection).split(" ");
+  if (result[1] === "win!") {
+    playerScore++;
+  } else if (result[1] === "lose!") {
+    computerScore++;
   }
+  console.log(result.join(" "));
+
   if (computerScore > playerScore) {
     console.log("Computer wins.Score " + computerScore + ":" + playerScore);
   } else if (playerScore > computerScore) {
