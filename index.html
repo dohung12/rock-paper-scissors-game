@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock Paper Scissors Game</title>
-    <script src="./app.js"></script>
+    <script src="./app.js" defer></script>
     <script
       src="https://kit.fontawesome.com/2964ed255d.js"
       crossorigin="anonymous"
@@ -13,16 +13,31 @@
   </head>
   <body>
     <h1>Rock Paper Scissors Game</h1>
-    <button class="btn rock-btn">
-      <i class="fas fa-hand-rock"></i>
-    </button>
+    <div class="display-score">
+      <p>Match result</p>
+      <p>
+        Player's score: <span class="player-score">0</span>. Computer's score:
+        <span class="computer-score">0</span>
+      </p>
+    </div>
+    <div class="btn-container">
+      <h2>Make your choice</h2>
+      <div class="player-choice">
+        <button data-id="rock" class="btn rock-btn">
+          <i class="fas fa-hand-rock"></i>
+        </button>
 
-    <button class="btn paper-btn">
-      <i class="fas fa-hand-paper"></i>
-    </button>
+        <button data-id="paper" class="btn paper-btn">
+          <i class="fas fa-hand-paper"></i>
+        </button>
 
-    <button class="btn scissors-btn">
-      <i class="fas fa-hand-scissors"></i>
-    </button>
+        <button data-id="scissors" class="btn scissors-btn">
+          <i class="fas fa-hand-scissors"></i>
+        </button>
+      </div>
+      <div class="computer-choice">
+        <h2>Computer's choice</h2>
+      </div>
+    </div>
   </body>
 </html>

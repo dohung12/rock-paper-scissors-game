@@ -13,41 +13,45 @@ loop back to beginning, keep the scores.
 
 */
 // VARIABLES
-const rps = ["rock", "paper", "scissors"];
 const rockBtn = document.querySelector(".rock-btn");
-const paperBtn = document.querySelector(".paper-btn");
-const scissorsBtn = document.querySelector(".scissors-btn");
-let playerSelection;
+const btns = document.querySelectorAll(".btn");
+
+const playerScoreDisplay = document.querySelector(".player-score");
+const computerScoreDisplay = document.querySelector(".computer-score");
+
+const computerChoiceDisplay = document.querySelector(".computer-choice");
+
+let playerSelection = "";
+let computerScore = 0;
+let playerScore = 0;
 // EVENT LISTENER
-
-rockBtn.addEventListener("click", () => {
-  playerSelection = "rock";
-});
-
-paperBtn.addEventListener("click", () => {
-  playerSelection = "paper";
-});
-
-scissorsBtn.addEventListener("click", () => {
-  playerSelection = "scissors";
-});
+btns.forEach((btn) => btn.addEventListener("click", setPlayerSelection));
 // FUNCTION
-function computerPlay() {
-  /*input: 
-  output: one random child in rps array */
-  return rps[random(rps.length)];
+
+function setPlayerSelection(e) {
+  playerSelection = e.currentTarget.dataset.id;
+  game();
 }
 
-function random(num) {
-  // input: number
-  // output random number in range [0, num)
-  return Math.floor(Math.random() * num);
+function computerPlay() {
+  computerChoiceDisplay.innerHTML = "<h2>Computer's choice</h2>";
+  const rps = ["rock", "paper", "scissors"];
+  function random(num) {
+    // input: number
+    // output random number in range [0, num)
+    return Math.floor(Math.random() * num);
+  }
+  computerSelection = rps[random(rps.length)];
+  let item = document.createElement("button");
+  let icon = document.createElement("i");
+  icon.setAttribute("class", `fas fa-hand-${computerSelection}`);
+  item.appendChild(icon);
+  computerChoiceDisplay.appendChild(item);
+  return computerSelection;
 }
 
 // calculate the result of a match
 function playRound(playerSelection, computerSelection) {
-  // input string, string
-  // output string
   // compare selections of player to computer, return who wins
   // alert if user give invalid input
   const localStr = playerSelection.toLowerCase() + computerSelection;
@@ -77,11 +81,8 @@ function game() {
   // output console.log
   // loop the game in 5 turns
   // save the score of each round, at the end, return who wins more round.
-  let computerScore = 0;
-  let playerScore = 0;
 
   const computerSelection = computerPlay();
-  const playerSelection = prompt("Rock paper scissors:");
   const result = playRound(playerSelection, computerSelection).split(" ");
   if (result[1] === "win!") {
     playerScore++;
