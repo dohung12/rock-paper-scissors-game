@@ -13,9 +13,9 @@ loop back to beginning, keep the scores.
 
 */
 // VARIABLES
-const rockBtn = document.querySelector(".rock-btn");
 const btns = document.querySelectorAll(".btn");
 
+const matchResult = document.querySelector(".match-result");
 const playerScoreDisplay = document.querySelector(".player-score");
 const computerScoreDisplay = document.querySelector(".computer-score");
 
@@ -52,50 +52,34 @@ function computerPlay() {
 
 // calculate the result of a match
 function playRound(playerSelection, computerSelection) {
-  // compare selections of player to computer, return who wins
-  // alert if user give invalid input
-  const localStr = playerSelection.toLowerCase() + computerSelection;
-
-  if (playerSelection.toLowerCase() === computerSelection) {
+  if (playerSelection === computerSelection) {
     return "Match tie";
   } else {
-    switch (localStr) {
+    switch (playerSelection + computerSelection) {
       case "paperscissors":
       case "rockpaper":
       case "scissorsrock":
-        return `You lose! ${computerSelection} beats ${playerSelection}`;
+        return "lose";
         break;
       case "paperrock":
       case "rockscissors":
       case "scissorspaper":
-        return `You win! ${playerSelection} beats ${computerSelection}`;
-        break;
-      default:
-        alert("invalid input");
+        return "win";
         break;
     }
   }
 }
 function game() {
-  // input:
-  // output console.log
-  // loop the game in 5 turns
-  // save the score of each round, at the end, return who wins more round.
-
   const computerSelection = computerPlay();
-  const result = playRound(playerSelection, computerSelection).split(" ");
-  if (result[1] === "win!") {
-    playerScore++;
-  } else if (result[1] === "lose!") {
-    computerScore++;
-  }
-  console.log(result.join(" "));
+  const result = playRound(playerSelection, computerSelection);
 
-  if (computerScore > playerScore) {
-    console.log("Computer wins.Score " + computerScore + ":" + playerScore);
-  } else if (playerScore > computerScore) {
-    console.log("You win. Score" + playerScore + ":" + computerScore);
+  if (result === "win") {
+    matchResult.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
+    playerScore++;
+  } else if (result === "lose") {
+    matchResult.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
+    computerScore++;
   } else {
-    console.log("Match tie");
+    matchResult.textContent = "Match tie";
   }
 }
