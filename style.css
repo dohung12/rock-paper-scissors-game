@@ -1,0 +1,83 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+@import url("https://fonts.googleapis.com/css2?family=Quattrocento&family=Quattrocento+Sans&display=swap");
+
+/* VARIABLES */
+
+:root {
+  --header-font: "Quattrocento", serif;
+  --secondary-font: "Quattrocento Sans", sans-serif;
+}
+
+body {
+  font-family: var(--secondary-font);
+}
+
+h1,
+h2 {
+  font-family: var(--header-font);
+}
+
+/* main */
+main {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 50px;
+}
+
+header p {
+  text-align: left;
+  font-size: 20px;
+  margin: 16px;
+}
+/* Btn container */
+.btn-container {
+  display: flex;
+  justify-content: center;
+
+  width: 500px;
+  height: 400px;
+}
+
+.choice-container {
+  display: flex;
+  flex-direction: column;
+  margin: 16px;
+  padding: 16px;
+  background-color: #eee;
+}
+
+.choice-container h2 {
+  margin: 16px;
+  font-size: 25px;
+  text-align: center;
+}
+
+.btn {
+  width: 100%;
+  font-size: 64px;
+  border: 0;
+  transition: all 0.1s ease;
+}
+
+.isClick {
+  transform: scale(1.1);
+  color: #ffc600;
+}

@@ -10,34 +10,41 @@
       src="https://kit.fontawesome.com/2964ed255d.js"
       crossorigin="anonymous"
     ></script>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Rock Paper Scissors Game</h1>
-    <div class="display-score">
-      <p>Match result: <span class="match-result"></span></p>
-      <p>
-        Player's score: <span class="player-score">0</span>. Computer's score:
-        <span class="computer-score">0</span>
-      </p>
-    </div>
-    <div class="btn-container">
-      <h2>Make your choice</h2>
-      <div class="player-choice">
-        <button data-id="rock" class="btn rock-btn">
-          <i class="fas fa-hand-rock"></i>
-        </button>
+    <main>
+      <header>
+        <h1>Rock Paper Scissors Game</h1>
+        <div class="display-score">
+          <p>Match result: <span class="match-result"></span></p>
+          <p>
+            Player's score: <span class="player-score">0</span>. Computer's
+            score:
+            <span class="computer-score">0</span>
+          </p>
+        </div>
+      </header>
+      <div class="btn-container">
+        <div class="player choice-container">
+          <h2>Make your choice</h2>
+          <button data-id="rock" class="btn rock-btn">
+            <i class="fas fa-hand-rock"></i>
+          </button>
 
-        <button data-id="paper" class="btn paper-btn">
-          <i class="fas fa-hand-paper"></i>
-        </button>
+          <button data-id="paper" class="btn paper-btn">
+            <i class="fas fa-hand-paper"></i>
+          </button>
 
-        <button data-id="scissors" class="btn scissors-btn">
-          <i class="fas fa-hand-scissors"></i>
-        </button>
+          <button data-id="scissors" class="btn scissors-btn">
+            <i class="fas fa-hand-scissors"></i>
+          </button>
+        </div>
+        <div class="computer choice-container">
+          <h2>Computer's choice</h2>
+          <div class="computer-choice"></div>
+        </div>
       </div>
-      <div class="computer-choice">
-        <h2>Computer's choice</h2>
-      </div>
-    </div>
+    </main>
   </body>
 </html>

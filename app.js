@@ -29,7 +29,12 @@ btns.forEach((btn) => btn.addEventListener("click", setPlayerSelection));
 // FUNCTION
 
 function setPlayerSelection(e) {
-  playerSelection = e.currentTarget.dataset.id;
+  const btn = e.currentTarget;
+  playerSelection = btn.dataset.id;
+  btn.classList.add("isClick");
+  btn.addEventListener("transitionend", () => {
+    btn.classList.remove("isClick");
+  });
   game();
 }
 
@@ -43,8 +48,11 @@ function computerPlay() {
   }
   computerSelection = rps[random(rps.length)];
   let item = document.createElement("button");
+  item.setAttribute("class", "btn computer-btn");
+
   let icon = document.createElement("i");
   icon.setAttribute("class", `fas fa-hand-${computerSelection}`);
+
   item.appendChild(icon);
   computerChoiceDisplay.appendChild(item);
   return computerSelection;
@@ -75,11 +83,11 @@ function game() {
 
   if (result === "win") {
     playerScore++;
-    matchResult.textContent = `You get 1 point! ${playerSelection.toUpperCase()} beats ${computerSelection.toUpperCase()}`;
+    matchResult.textContent = `You get 1 point!`;
     playerScoreDisplay.textContent = playerScore;
   } else if (result === "lose") {
     computerScore++;
-    matchResult.textContent = `Computer get 1 point! ${computerSelection.toUpperCase()} beats ${playerSelection.toUpperCase()}`;
+    matchResult.textContent = `Computer get 1 point!`;
     computerScoreDisplay.textContent = computerScore;
   } else {
     matchResult.textContent = "Match tie";
