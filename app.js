@@ -34,7 +34,7 @@ function setPlayerSelection(e) {
 }
 
 function computerPlay() {
-  computerChoiceDisplay.innerHTML = "<h2>Computer's choice</h2>";
+  computerChoiceDisplay.innerHTML = "";
   const rps = ["rock", "paper", "scissors"];
   function random(num) {
     // input: number
@@ -74,12 +74,28 @@ function game() {
   const result = playRound(playerSelection, computerSelection);
 
   if (result === "win") {
-    matchResult.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
     playerScore++;
+    matchResult.textContent = `You get 1 point! ${playerSelection.toUpperCase()} beats ${computerSelection.toUpperCase()}`;
+    playerScoreDisplay.textContent = playerScore;
   } else if (result === "lose") {
-    matchResult.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
     computerScore++;
+    matchResult.textContent = `Computer get 1 point! ${computerSelection.toUpperCase()} beats ${playerSelection.toUpperCase()}`;
+    computerScoreDisplay.textContent = computerScore;
   } else {
     matchResult.textContent = "Match tie";
   }
+
+  if (computerScore >= 5) {
+    declareWin("Computer");
+  } else if (playerScore >= 5) {
+    declareWin("Player");
+  }
+}
+
+function declareWin(winner) {
+  matchResult.textContent = `${winner} has won!`;
+  playerScore = 0;
+  playerScoreDisplay.textContent = playerScore;
+  computerScore = 0;
+  computerScoreDisplay.textContent = computerScore;
 }
